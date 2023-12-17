@@ -1,0 +1,1 @@
+INSERT INTO "settings" (uin, hex) VALUES ('remote_admin', '#000000');

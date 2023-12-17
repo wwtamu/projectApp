@@ -1,0 +1,20 @@
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -H "client-id: william" -H "client-secret: abc123" -H "client-email: wwelling@outlook.com" http://192.168.1.106:8080/authserv/
+
+curl --user wwelling:abc123 --data "grant_type=password" -H "Accept: application/json" http://192.168.1.106:8080/authserv/oauth/token
+
+curl --user remote-admin:abc123 --data "grant_type=client_credentials" -H "Accept: application/json" http://192.168.1.106:8080/authserv/oauth/check_token?token=
+
+curl --user remote-admin:abc123 --data "grant_type=client_credentials" -H "Accept: application/json" http://192.168.1.106:8080/authserv/token_key?token=
+
+
+curl http://192.168.1.107:8080/restserv/settings/hex?value=123456 -H "Authorization: Bearer "
+
+curl http://192.168.1.107:8080/restserv/settings -H "Authorization: Bearer "
+
+curl -v --data "grant_type=refresh_token&client_id=THE_CLIENT_ID&refresh_token=THE_REFRESH_TOKEN" http://localhost:8080/oauth/token
+
+
+
+curl --data "grant_type=refresh_token&client_id=wwelling&refresh_token=" -H "Accept: application/json" http://192.168.1.106:8080/authserv/oauth/token
+
+curl --data "grant_type=refresh_token&client_id=wwelling&refresh_token=" -H "Accept: application/json" http://192.168.1.106:8080/authserv/oauth/token

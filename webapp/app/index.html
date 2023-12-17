@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+	<head>
+
+		<base href="/">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>Project App</title>
+
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon" />
+
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+
+		<link rel="stylesheet" href="resources/styles/main.css">
+
+		<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+		
+	</head>
+
+	<body>
+		
+		<header>
+						
+			<nav class="navbar navbar-default" ng-controller="Navigation">
+			
+			    <div class="container-fluid" ng-controller="UserController">
+			        
+			        <div class="navbar-header">
+			        
+			            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			                <span class="sr-only">Toggle navigation</span>
+			                <span class="icon-bar"></span>
+			                <span class="icon-bar"></span>
+			                <span class="icon-bar"></span>
+			            </button>
+			            
+			            <a class="navbar-brand" href="/dashboard">Project App</a>
+			            
+			        </div>
+			        
+			        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			        
+			            <ul class="nav navbar-nav">
+			                
+			                <li ng-class="{'active' : view == '/dashboard'}">
+			                	<a href="/Dashboard">Home</a>
+			                </li>
+			                
+			                <li ng-class="{'active' : view == '/blog'}">
+			                	<a href="/blog">Blog</a>
+			                </li>
+			                
+			                <li ng-class="{'active' : view == '/gallary'}">
+			                	<a href="/gallary">Gallary</a>
+			                </li>
+			                
+			                <li class="dropdown">
+			                    <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Links 
+			                        <span class="caret"></span>
+			                    </a>
+			                    <ul class="dropdown-menu" role="menu">
+			                        <li>
+			                            <a href>Action</a>
+			                        </li>
+			                        <li>
+			                            <a href>Another action</a>
+			                        </li>
+			                        <li>
+			                            <a href>Something else here</a>
+			                        </li>
+			                        <li class="divider"></li>
+			                        <li>
+			                            <a href>Separated link</a>
+			                        </li>
+			                        <li class="divider"></li>
+			                        <li>
+			                            <a href>One more separated link</a>
+			                        </li>
+			                    </ul>
+			                </li>
+			            </ul>
+			            
+			            <form class="navbar-form navbar-left" role="search">
+			                <div class="form-group">
+			                    <input type="text" class="form-control" placeholder="Search">
+			                </div>
+			                <button type="submit" class="btn btn-default">Submit</button>
+		                </form>
+		                
+		                <ul class="nav navbar-nav navbar-right" ng-controller="Authentication">
+		                    
+		                    <li>
+		                        <a href data-toggle="modal" data-target="#settingsModal">
+		                        	<span  class="glyphicon glyphicon-cog pad-top"></span>
+		                        </a>
+		                    </li>
+		                    
+		                    <div id="settingsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="settingsModal" aria-hidden="true" ng-controller="Settings">
+							  	<div class="modal-dialog">
+							    	<div class="modal-content">		      	
+								      	<div class="modal-header modal-header-primary">
+											<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+											<h3>Settings</h3>
+										</div>
+										<div class="modal-body">
+											<div class="well well-lg">              				
+												<form class="form-horizontal" role="form">					    				
+													<div class="form-group">
+														<label class="control-label col-md-7">Coming soon!</label>
+													</div>
+												</form>
+											 </div>
+										</div>
+							    	</div>
+							  	</div>
+							</div>
+		                    
+		                    <li class="dropdown" ng-if="isAuthenticated()" ng-class="{'active' : view == '/profile'}">
+		                    
+		                        <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+		                        	{{user.first_name}} {{user.last_name}}
+		                            <span  class="glyphicon glyphicon-user pad-top"></span>
+		                        </a>
+		                        
+		                        <ul class="dropdown-menu" role="menu">
+		                            <li ng-class="{'active' : view == '/profile'}">
+		                                <a href="/profile">Profile</a>
+		                            </li>
+		                            <li ng-if="isAdmin()" ng-class="{'active' : view == '/admin'}">
+		                                <a href="/admin">Admin</a>
+		                            </li>
+		                            <li>
+		                                <a href ng-click="test()">Test</a>
+		                            </li>
+		                            <li class="divider"></li>
+		                            <li>
+		                                <a href data-toggle="modal" data-target="#logoutModal">Logout</a>
+		                            </li>
+		                        </ul>		                         
+		                    </li>		                            
+		                    <li ng-if="!isAuthenticated()">
+		                    	<a href data-toggle="modal" data-target="#loginModal">Login</a>		                    	
+		                    </li>
+		                    
+		                    <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+							  	<div class="modal-dialog">
+							    	<div class="modal-content">
+								      	<div class="modal-header modal-header-primary">
+											<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+											<h3>Login/Register</h3>
+										</div>
+										<div class="modal-body">
+											<div class="well well-lg">
+												<ul class="nav nav-tabs">
+													<li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+													<li><a href="#register" data-toggle="tab">Register</a></li>
+												</ul>					                  				
+												<div id="tabContent" class="tab-content">					                    
+													<div class="tab-pane active in" id="login">
+														</br>
+														<label id="reauth_message" class="label-warning"></label>
+														</br></br>
+														<form class="form-horizontal" role="form" data-toggle="validator" ng-submit="login(id)">
+										    				<div class="form-group">
+										      					<label class="control-label col-md-4" for="username">Username:</label>
+										      					<div class="col-md-8">
+										        					<input ng-model="id.username" type="username" class="form-control" id="username" placeholder="Enter username" required>
+										      					</div>
+										    				</div>
+										    				<div class="form-group">
+										      					<label class="control-label col-md-4" for="password">Password:</label>
+										      					<div class="col-md-8">          
+										        					<input ng-model="id.password" type="password" class="form-control" id="password" placeholder="Enter password" required>
+										      					</div>
+										    				</div>
+										    				<div class="form-group">        
+										      					<div class="col-md-12 text-right">
+										        					<div class="checkbox">
+										          						<label><input type="checkbox" ng-model="id.remember" ng-click="toggleRememberMe()"> Remember me</label>
+										        					</div>
+										      					</div>
+										    				</div>
+										    				<div class="form-group">        
+										      					<div class="col-md-12 text-right">
+										        					<button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="login(id)">Login</button>
+										      					</div>
+										    				</div>
+										  				</form>					                                     
+										            </div>				                    					                    
+													<div class="tab-pane fade" id="register">					                      		
+														</br>
+														<form class="form-horizontal" role="form" data-toggle="validator" ng-submit="register(application)">
+															<div class="form-group">
+										  						<label class="control-label col-md-4" for="username">Username:</label>
+													      		<div class="col-md-8">
+													        		<input ng-model="application.username" type="username" class="form-control" id="username" placeholder="Enter desired username" required>
+													      		</div>
+													    	</div>														    
+														    <div class="form-group">
+														      	<label class="control-label col-md-4" for="firstname">First Name:</label>
+														      	<div class="col-md-8">
+														        	<input ng-model="application.firstname" type="text" class="form-control" id="firstname" placeholder="Enter first name" required>
+														      	</div>
+														    </div>															    
+														    <div class="form-group">
+														      	<label class="control-label col-md-4" for="lastname">Last Name:</label>
+														      	<div class="col-md-8">
+															        <input ng-model="application.lastname" type="text" class="form-control" id="lastname" placeholder="Enter last name" required>
+														      	</div>
+														    </div>															    
+														    <div class="form-group">
+														      	<label class="control-label col-md-4" for="email">Email:</label>
+														      	<div class="col-md-8">
+														        	<input ng-model="application.email" type="email" class="form-control" id="email" placeholder="Enter email" required>
+														      	</div>
+														    </div>															    
+														    <div class="form-group">
+														      	<label class="control-label col-md-4" for="password">Password:</label>
+														      	<div class="col-md-8">          
+															        <input ng-model="application.password" type="password" class="form-control" id="password" placeholder="Enter password" required>
+														      </div>
+														    </div>															    
+														    <div class="form-group">
+														      	<label class="control-label col-md-4" for="confirm">Confirm Password:</label>
+														      	<div class="col-md-8">          
+														        	<input ng-model="application.confirm" type="password" class="form-control" id="confirm" placeholder="Enter password again" required>
+														      	</div>
+														    </div>															    
+														    <div class="form-group">        
+														      	<div class="col-md-12 text-right">
+														        	<button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="register(application)">Register</button>
+														      	</div>
+														    </div>
+														</form>
+										            </div>
+												</div>
+											</div>
+										</div>
+							    	</div>
+							  	</div>
+							</div>
+							
+							<div id="logoutModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="logoutModal" aria-hidden="true">
+							  	<div class="modal-dialog">
+							    	<div class="modal-content">
+								      	<div class="modal-header modal-header-warning">
+											<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+											<h3>Logout</h3>
+										</div>
+										<div class="modal-body">
+											<div class="well well-lg">              				
+												<form class="form-horizontal" role="form" data-toggle="validator" ng-submit="logout()">					    				
+													<div class="form-group">
+														<label class="control-label col-md-8">Are you sure you wish to logout?</label> 
+														<div class="col-md-12 text-right">
+															<button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="logout()">Logout</button>
+														</div>
+													</div>
+												</form>					                                     
+											 </div>
+										</div>
+							    	</div>
+							  	</div>
+							</div>
+		                    
+		                </ul>		                
+		            </div>		            
+		            <!-- /.navbar-collapse -->
+		        </div>
+		        <!-- /.container-fluid -->
+		    </nav>
+			
+		</header>
+		
+		
+		<div class="view" ng-view>
+		</div>
+		
+		
+		<footer class="footer navbar-fixed-bottom">
+			Project App
+			<span app-version></span>
+			<span>&copy; Copyright 2015</span>
+		</footer>
+
+		
+		<!-- Bower components -->		
+			
+			<script src="bower_components/jquery/dist/jquery.min.js"></script>
+			<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+			
+			<script src="bower_components/sockjs/beta/sockjs-client-1.0.0-beta.12/dist/sockjs-1.0.0-beta.12.min.js"></script>
+			<script src="bower_components/stomp-websocket/lib/stomp.min.js"></script>
+			
+			<script src="bower_components/angular/angular.js"></script>
+			<script src="bower_components/angular-route/angular-route.js"></script>
+			
+			<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		
+		<!-- end components -->
+		
+		<!-- Modules -->
+		
+			<script src="components/version/version.js"></script>
+			<script src="components/version/version-directive.js"></script>
+			<script src="components/version/interpolate-filter.js"></script>
+
+		<!-- end modules -->
+		
+		<!-- build:js resources/scripts/app_concat.js -->
+			
+			<script src="config/global.js"></script>
+			
+			<script src="setup.js"></script>
+			
+			<script src="app.js"></script>
+						
+			<script src="config/routes.js"></script>
+			
+			<script src="navigation/navigationController.js"></script>
+			
+			<script src="authentication/authService.js"></script>
+			<script src="authentication/authController.js"></script>
+			<script src="authentication/userController.js"></script>
+			
+			<script src="models/user.js"></script>
+			<script src="models/abstract.js"></script>
+			
+			<script src="settings/settingsController.js"></script>
+			
+			<script src="websockets/stompService.js"></script>
+			
+			<script src="boot.js"></script>
+			
+		<!-- endbuild -->
+		
+	</body>
+
+</html>

@@ -1,0 +1,11 @@
+<!-- Modal Button 
+<span class="{{attr.modalClass}}" data-toggle="{{attr.modalId}}" data-target="#{{attr.modalId}}" ng-transclude></span> 
+-->
+<!-- Modal -->
+<div id="{{attr.modalId}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <span ng-include src="attr.modalView"></span>
+    </div>
+  </div>
+</div>

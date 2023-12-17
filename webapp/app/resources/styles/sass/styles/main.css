@@ -1,0 +1,27 @@
+/* line 1, sass/main.scss */
+body {
+  display: none;
+}
+
+/* line 5, sass/main.scss */
+#root {
+  text-align: center;
+}
+
+/* line 9, sass/main.scss */
+.right {
+  text-align: right;
+}
+
+/* line 13, sass/main.scss */
+.left {
+  text-align: left;
+}
+
+/* line 17, sass/main.scss */
+.footer {
+  width: 100%;
+  background: #CCC;
+  display: block;
+  position: sticky;
+}

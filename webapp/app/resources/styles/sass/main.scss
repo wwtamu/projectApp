@@ -1,0 +1,86 @@
+/* line 1, sass/main.scss */
+html {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 8, sass/main.scss */
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+
+/* line 16, sass/main.scss */
+header {
+  width: 100%;
+}
+
+/* line 20, sass/main.scss */
+footer {
+  width: 100%;
+  background: #CCC;
+  text-align: center;
+}
+
+/* line 26, sass/main.scss */
+.view {
+  text-align: center;
+}
+
+/* line 30, sass/main.scss */
+.right {
+  text-align: right;
+}
+
+/* line 34, sass/main.scss */
+.left {
+  text-align: left;
+}
+
+/* line 38, sass/main.scss */
+.pad-top {
+  padding-top: 3px;
+}
+
+.modal-header-primary {
+  color: #FFFFFF;
+  background-color: #2929A3;
+  border-color: #000000;
+  border-radius: 5px 5px 0px 0px;
+  height: 75px;
+}
+
+.modal-header-warning {
+  color: #FFFFFF;
+  background-color: #FFA319;
+  border-color: #000000;
+  border-radius: 5px 5px 0px 0px;
+  height: 75px;
+}
+
+.modal-header-danger {
+  color: #FFFFFF;
+  background-color: #E60000;
+  border-color: #000000;
+  border-radius: 5px 5px 0px 0px;
+  height: 75px;
+}
+
+.modal-close {
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.modal-content {
+  min-width: 240px;
+}
+
+.well {
+  min-width: 210px;
+}
+

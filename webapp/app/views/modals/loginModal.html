@@ -1,0 +1,89 @@
+<div class="modal-header {{attr.modalHeaderClass}}">
+	<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+	<h3>Login/Register</h3>
+</div>
+<div class="modal-body">
+	<div class="well well-lg">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+			<li><a href="#register" data-toggle="tab">Register</a></li>
+		</ul>					                  				
+		<div id="tabContent" class="tab-content">					                    
+			<div class="tab-pane active in" id="login">
+				</br>
+				<form class="form-horizontal" role="form" data-toggle="validator" ng-submit="login(id)">
+    				<div class="form-group">
+      					<label class="control-label col-md-4" for="username">Username:</label>
+      					<div class="col-md-8">
+        					<input ng-model="id.username" type="username" class="form-control" id="username" placeholder="Enter username" required>
+      					</div>
+    				</div>
+    				<div class="form-group">
+      					<label class="control-label col-md-4" for="password">Password:</label>
+      					<div class="col-md-8">          
+        					<input ng-model="id.password" type="password" class="form-control" id="password" placeholder="Enter password" required>
+      					</div>
+    				</div>
+    				<div class="form-group">        
+      					<div class="col-md-12 text-right">
+        					<div class="checkbox">
+          						<label><input type="checkbox" ng-model="id.remember" ng-click="toggleRememberMe()"> Remember me</label>
+        					</div>
+      					</div>
+    				</div>
+    				<div class="form-group">        
+      					<div class="col-md-12 text-right">
+        					<button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="login(id)">Login</button>
+      					</div>
+    				</div>
+  				</form>					                                     
+            </div>				                    					                    
+			<div class="tab-pane fade" id="register">					                      		
+				</br>
+				<form class="form-horizontal" role="form" data-toggle="validator" ng-submit="register(application)">
+					<div class="form-group">
+  						<label class="control-label col-md-4" for="username">Username:</label>
+			      		<div class="col-md-8">
+			        		<input ng-model="application.username" type="username" class="form-control" id="username" placeholder="Enter desired username" required>
+			      		</div>
+			    	</div>														    
+				    <div class="form-group">
+				      	<label class="control-label col-md-4" for="firstname">First Name:</label>
+				      	<div class="col-md-8">
+				        	<input ng-model="application.firstname" type="text" class="form-control" id="firstname" placeholder="Enter first name" required>
+				      	</div>
+				    </div>															    
+				    <div class="form-group">
+				      	<label class="control-label col-md-4" for="lastname">Last Name:</label>
+				      	<div class="col-md-8">
+					        <input ng-model="application.lastname" type="text" class="form-control" id="lastname" placeholder="Enter last name" required>
+				      	</div>
+				    </div>															    
+				    <div class="form-group">
+				      	<label class="control-label col-md-4" for="email">Email:</label>
+				      	<div class="col-md-8">
+				        	<input ng-model="application.email" type="email" class="form-control" id="email" placeholder="Enter email" required>
+				      	</div>
+				    </div>															    
+				    <div class="form-group">
+				      	<label class="control-label col-md-4" for="password">Password:</label>
+				      	<div class="col-md-8">          
+					        <input ng-model="application.password" type="password" class="form-control" id="password" placeholder="Enter password" required>
+				      </div>
+				    </div>															    
+				    <div class="form-group">
+				      	<label class="control-label col-md-4" for="confirm">Confirm Password:</label>
+				      	<div class="col-md-8">          
+				        	<input ng-model="application.confirm" type="password" class="form-control" id="confirm" placeholder="Enter password again" required>
+				      	</div>
+				    </div>															    
+				    <div class="form-group">        
+				      	<div class="col-md-12 text-right">
+				        	<button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="register(application)">Register</button>
+				      	</div>
+				    </div>
+				</form>
+            </div>
+		</div>
+	</div>
+</div>
